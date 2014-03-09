@@ -10,6 +10,11 @@
 		E184026D18C3C31600FC11EF /* replay.png in Resources */ = {isa = PBXBuildFile; fileRef = E184026B18C3C31600FC11EF /* replay.png */; };
 		E184026E18C3C31600FC11EF /* replay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E184026C18C3C31600FC11EF /* replay@2x.png */; };
 		E1D54F6818C7DF6600ADEABA /* SKButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D54F6718C7DF6600ADEABA /* SKButtonNode.m */; };
+		E1D54F7118CB4A2600ADEABA /* buttonLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D54F6D18CB4A2600ADEABA /* buttonLeft.png */; };
+		E1D54F7218CB4A2600ADEABA /* buttonLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D54F6E18CB4A2600ADEABA /* buttonLeft@2x.png */; };
+		E1D54F7318CB4A2600ADEABA /* buttonRight.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D54F6F18CB4A2600ADEABA /* buttonRight.png */; };
+		E1D54F7418CB4A2600ADEABA /* buttonRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D54F7018CB4A2600ADEABA /* buttonRight@2x.png */; };
+		E1D54F7718CC65DF00ADEABA /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D54F7618CC65DF00ADEABA /* MenuScene.m */; };
 		E1E0466718C3E3E300F6D74E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E0466618C3E3E300F6D74E /* iAd.framework */; };
 		F275B671186E0B06009F6E6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F275B670186E0B06009F6E6B /* Foundation.framework */; };
 		F275B673186E0B06009F6E6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F275B672186E0B06009F6E6B /* CoreGraphics.framework */; };
@@ -63,6 +68,12 @@
 		E184026C18C3C31600FC11EF /* replay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "replay@2x.png"; path = "sprites.atlas/replay@2x.png"; sourceTree = "<group>"; };
 		E1D54F6618C7DF6600ADEABA /* SKButtonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKButtonNode.h; sourceTree = "<group>"; };
 		E1D54F6718C7DF6600ADEABA /* SKButtonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKButtonNode.m; sourceTree = "<group>"; };
+		E1D54F6D18CB4A2600ADEABA /* buttonLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonLeft.png; sourceTree = "<group>"; };
+		E1D54F6E18CB4A2600ADEABA /* buttonLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonLeft@2x.png"; sourceTree = "<group>"; };
+		E1D54F6F18CB4A2600ADEABA /* buttonRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonRight.png; sourceTree = "<group>"; };
+		E1D54F7018CB4A2600ADEABA /* buttonRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonRight@2x.png"; sourceTree = "<group>"; };
+		E1D54F7518CC65DF00ADEABA /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		E1D54F7618CC65DF00ADEABA /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
 		E1E0466618C3E3E300F6D74E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		F275B66D186E0B06009F6E6B /* SuperKoalio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperKoalio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F275B670186E0B06009F6E6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -188,6 +199,8 @@
 				F275B6AD186E0B8D009F6E6B /* Player.m */,
 				E1D54F6618C7DF6600ADEABA /* SKButtonNode.h */,
 				E1D54F6718C7DF6600ADEABA /* SKButtonNode.m */,
+				E1D54F7518CC65DF00ADEABA /* MenuScene.h */,
+				E1D54F7618CC65DF00ADEABA /* MenuScene.m */,
 				F275B68A186E0B06009F6E6B /* GameLevelScene.h */,
 				F275B68B186E0B06009F6E6B /* GameLevelScene.m */,
 				F275B681186E0B06009F6E6B /* AppDelegate.h */,
@@ -256,6 +269,10 @@
 			children = (
 				E184026B18C3C31600FC11EF /* replay.png */,
 				E184026C18C3C31600FC11EF /* replay@2x.png */,
+				E1D54F6D18CB4A2600ADEABA /* buttonLeft.png */,
+				E1D54F6E18CB4A2600ADEABA /* buttonLeft@2x.png */,
+				E1D54F6F18CB4A2600ADEABA /* buttonRight.png */,
+				E1D54F7018CB4A2600ADEABA /* buttonRight@2x.png */,
 				F275B6C0186E21D1009F6E6B /* Audio */,
 				F275B6C1186E21D9009F6E6B /* TMX Files */,
 				F275B6B6186E21AB009F6E6B /* sprites.atlas */,
@@ -379,12 +396,16 @@
 				F275B6BE186E21CB009F6E6B /* level1.mp3 in Resources */,
 				F275B6F1186E2749009F6E6B /* tileSet@2x.png in Resources */,
 				F275B67D186E0B06009F6E6B /* InfoPlist.strings in Resources */,
+				E1D54F7118CB4A2600ADEABA /* buttonLeft.png in Resources */,
 				F275B690186E0B06009F6E6B /* Images.xcassets in Resources */,
 				E184026D18C3C31600FC11EF /* replay.png in Resources */,
 				E184026E18C3C31600FC11EF /* replay@2x.png in Resources */,
+				E1D54F7418CB4A2600ADEABA /* buttonRight@2x.png in Resources */,
+				E1D54F7218CB4A2600ADEABA /* buttonLeft@2x.png in Resources */,
 				F275B6BD186E21CB009F6E6B /* jump.wav in Resources */,
 				F275B6BC186E21CB009F6E6B /* hurt.wav in Resources */,
 				F275B6F0186E2749009F6E6B /* tileSet.png in Resources */,
+				E1D54F7318CB4A2600ADEABA /* buttonRight.png in Resources */,
 				F275B686186E0B06009F6E6B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +438,7 @@
 				F275B6E3186E25C1009F6E6B /* SKTAudio.m in Sources */,
 				F275B6E4186E25C1009F6E6B /* SKTEffects.m in Sources */,
 				F275B6DE186E25C1009F6E6B /* SKAction+SKTExtras.m in Sources */,
+				E1D54F7718CC65DF00ADEABA /* MenuScene.m in Sources */,
 				F275B6E0186E25C1009F6E6B /* SKEmitterNode+SKTExtras.m in Sources */,
 				F275B6DF186E25C1009F6E6B /* SKAction+SKTSpecialEffects.m in Sources */,
 				F275B6E1186E25C1009F6E6B /* SKNode+SKTDebugDraw.m in Sources */,

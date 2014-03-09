@@ -39,24 +39,19 @@
     self.player.position = CGPointMake(100, 50);
     self.player.zPosition = 15;
     [self.map addChild:self.player];
-    [[SKTAudio sharedInstance] playBackgroundMusic:@"level1.mp3"];
+    //[[SKTAudio sharedInstance] playBackgroundMusic:@"level1.mp3"];
+    
+    [self addChild: [self leftButtonNode]];
     
     self.userInteractionEnabled = YES;
     
-    SKButtonNode *leftButton = [[SKButtonNode alloc] initWithImageNamedNormal:@"buttonNormal" selected:@"buttonSelected"];
-    [leftButton setPosition:CGPointMake(100, 100)];
-    [leftButton.title setText:@"Button"];
-    [leftButton.title setFontName:@"Chalkduster"];
-    [leftButton.title setFontSize:20.0];
-    [leftButton setTouchUpInsideTarget:self action:@selector(leftButtonAction)];
-    [self addChild:leftButton];
-
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(appWillEnterBackground)
+     name:UIApplicationWillResignActiveNotification
+     object:NULL];
   }
   return self;
-}
-
--(void)leftButtonAction {
-  return;
 }
 
 -(void)update:(NSTimeInterval)currentTime {
@@ -159,17 +154,47 @@
   player.position = player.desiredPosition;
 }
 
+//-(SKButtonNode *)leftButton {
+//  SKButtonNode *leftNode = [[SKButtonNode alloc] initWithImageNamedNormal:@"buttonNormal" selected:@"buttonSelected"];
+//  [leftNode setPosition:CGPointMake(100, 100)];
+//  [leftNode.title setText:@"Button"];
+//  [leftNode.title setFontName:@"Chalkduster"];
+//  [leftNode.title setFontSize:20.0];
+//  leftNode.name = @"leftButtonNode";
+//  [leftNode setTouchUpInsideTarget:self action:@selector(leftButtonAction)];
+//  return leftNode;
+//}
+
+- (SKSpriteNode *)leftButtonNode
+{
+  SKSpriteNode *leftNode = [SKSpriteNode spriteNodeWithImageNamed:@"buttonLeft.png"];
+  leftNode.position = CGPointMake(100,100);
+  leftNode.name = @"leftButtonNode"; //how the node is identified later
+  leftNode.zPosition = 1.0;
+  return leftNode;
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  for (UITouch *touch in touches) {
-    CGPoint touchLocation = [touch locationInNode:self];
-    if (touchLocation.x > self.size.width / 2.0) {
-      self.player.mightAsWellJump = YES;
-    } else {
-      self.player.forwardMarch = YES;
-    }
+  UITouch *touch = [touches anyObject];
+  CGPoint location = [touch locationInNode:self];
+  SKNode *node = [self nodeAtPoint:location];
+  
+  if ([node.name isEqualToString:@"leftButtonNode"]) {
+    self.player.forwardMarch = YES;
   }
 }
+
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//  for (UITouch *touch in touches) {
+//    CGPoint touchLocation = [touch locationInNode:self];
+//    if (touchLocation.x > self.size.width / 2.0) {
+//      self.player.mightAsWellJump = YES;
+//    } else {
+//      self.player.forwardMarch = YES;
+//    }
+//  }
+//}
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   for (UITouch *touch in touches) {
@@ -280,6 +305,30 @@
   if (self.player.position.x > 3130.0) {
     [self gameOver:1];
   }
+}
+
+- (void)appWillEnterBackground
+{
+  SKView *skView = (SKView *)self.view;
+  skView.paused = YES;
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+  [[NSNotificationCenter defaultCenter]
+   addObserver:self
+   selector:@selector(appWillEnterForeground)
+   name:UIApplicationWillEnterForegroundNotification
+   object:NULL];
+}
+
+- (void)appWillEnterForeground
+{
+  SKView * skView = (SKView *)self.view;
+  skView.paused = NO;
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+  [[NSNotificationCenter defaultCenter]
+   addObserver:self
+   selector:@selector(appWillEnterBackground)
+   name:UIApplicationWillResignActiveNotification
+   object:NULL];
 }
 
 @end
