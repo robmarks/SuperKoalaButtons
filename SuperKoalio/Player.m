@@ -25,7 +25,7 @@
     
     CGPoint forwardMove = CGPointMake(800.0, 0.0);
     CGPoint forwardMoveStep = CGPointMultiplyScalar(forwardMove, delta);
-    CGPoint backwardMove = CGPointMake(800.0, 0.0);
+    CGPoint backwardMove = CGPointMake(-800.0, 0.0);
     CGPoint backwardMoveStep = CGPointMultiplyScalar(backwardMove, delta);
     
     self.velocity = CGPointAdd(self.velocity, gravityStep);
@@ -51,7 +51,7 @@
         //NSLog(@"Something Something Forward");
     }
     
-    CGPoint minMovement = CGPointMake(0.0, -450);
+    CGPoint minMovement = CGPointMake(-120.0, -450);
     CGPoint maxMovement = CGPointMake(120.0, 250.0);
     self.velocity = CGPointMake(Clamp(self.velocity.x, minMovement.x, maxMovement.x), Clamp(self.velocity.y, minMovement.y, maxMovement.y));
     

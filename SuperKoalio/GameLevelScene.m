@@ -43,6 +43,7 @@
     
     [self addChild: [self rightButtonNode]];
     [self addChild: [self leftButtonNode]];
+    [self addChild: [self jumpButtonNode]];
     
     self.userInteractionEnabled = YES;
     
@@ -169,7 +170,7 @@
 - (SKSpriteNode *)rightButtonNode
 {
   SKSpriteNode *rightNode = [SKSpriteNode spriteNodeWithImageNamed:@"buttonRight.png"];
-  rightNode.position = CGPointMake(200,100);
+  rightNode.position = CGPointMake(150,100);
   rightNode.name = @"rightButtonNode"; //how the node is identified later
   rightNode.zPosition = 1.0;
   return rightNode;
@@ -184,6 +185,15 @@
   return leftNode;
 }
 
+- (SKSpriteNode *)jumpButtonNode
+{
+  SKSpriteNode *jumpNode = [SKSpriteNode spriteNodeWithImageNamed:@"buttonUp.png"];
+  jumpNode.position = CGPointMake(125,150);
+  jumpNode.name = @"jumpButtonNode"; //how the node is identified later
+  jumpNode.zPosition = 1.0;
+  return jumpNode;
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
   UITouch *touch = [touches anyObject];
@@ -196,6 +206,9 @@
   } else if ([node.name isEqualToString:@"leftButtonNode"]) {
     self.player.backwardMarch = YES;
     NSLog(@"Left Button Pressed");
+  } else if ([node.name isEqualToString:@"jumpButtonNode"]) {
+    self.player.mightAsWellJump = YES;
+    NSLog(@"Up Button Pressed");
   }
 }
 
