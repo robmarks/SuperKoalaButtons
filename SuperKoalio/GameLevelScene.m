@@ -41,6 +41,7 @@
     [self.map addChild:self.player];
     //[[SKTAudio sharedInstance] playBackgroundMusic:@"level1.mp3"];
     
+    [self addChild: [self rightButtonNode]];
     [self addChild: [self leftButtonNode]];
     
     self.userInteractionEnabled = YES;
@@ -63,7 +64,7 @@
   [self.player update:delta];
   
   [self checkForAndResolveCollisionsForPlayer:self.player forLayer:self.walls];
-  [self handleHazardCollisions:self.player];
+  //[self handleHazardCollisions:self.player];
   
   [self setViewpointCenter:self.player.position];
   
@@ -165,6 +166,15 @@
 //  return leftNode;
 //}
 
+- (SKSpriteNode *)rightButtonNode
+{
+  SKSpriteNode *rightNode = [SKSpriteNode spriteNodeWithImageNamed:@"buttonRight.png"];
+  rightNode.position = CGPointMake(200,100);
+  rightNode.name = @"rightButtonNode"; //how the node is identified later
+  rightNode.zPosition = 1.0;
+  return rightNode;
+}
+
 - (SKSpriteNode *)leftButtonNode
 {
   SKSpriteNode *leftNode = [SKSpriteNode spriteNodeWithImageNamed:@"buttonLeft.png"];
@@ -180,8 +190,12 @@
   CGPoint location = [touch locationInNode:self];
   SKNode *node = [self nodeAtPoint:location];
   
-  if ([node.name isEqualToString:@"leftButtonNode"]) {
+  if ([node.name isEqualToString:@"rightButtonNode"]) {
     self.player.forwardMarch = YES;
+    NSLog(@"Right Button Pressed");
+  } else if ([node.name isEqualToString:@"leftButtonNode"]) {
+    self.player.backwardMarch = YES;
+    NSLog(@"Left Button Pressed");
   }
 }
 
@@ -196,36 +210,43 @@
 //  }
 //}
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  for (UITouch *touch in touches) {
-    
-    float halfWidth = self.size.width / 2.0;
-    CGPoint touchLocation = [touch locationInNode:self];
-    
-    //get previous touch and convert it to node space
-    CGPoint previousTouchLocation = [touch previousLocationInNode:self];
-    
-    if (touchLocation.x > halfWidth && previousTouchLocation.x <= halfWidth) {
-      self.player.forwardMarch = NO;
-      self.player.mightAsWellJump = YES;
-    } else if (previousTouchLocation.x > halfWidth && touchLocation.x <= halfWidth) {
-      self.player.forwardMarch = YES;
-      self.player.mightAsWellJump = NO;
-    }
-  }
-}
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+//  for (UITouch *touch in touches) {
+//    
+//    float halfWidth = self.size.width / 2.0;
+//    CGPoint touchLocation = [touch locationInNode:self];
+//    
+//    //get previous touch and convert it to node space
+//    CGPoint previousTouchLocation = [touch previousLocationInNode:self];
+//    
+//    if (touchLocation.x > halfWidth && previousTouchLocation.x <= halfWidth) {
+//      self.player.forwardMarch = NO;
+//      self.player.mightAsWellJump = YES;
+//    } else if (previousTouchLocation.x > halfWidth && touchLocation.x <= halfWidth) {
+//      self.player.forwardMarch = YES;
+//      self.player.mightAsWellJump = NO;
+//    }
+//  }
+//}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  
-  for (UITouch *touch in touches) {
-    CGPoint touchLocation = [touch locationInNode:self];
-    if (touchLocation.x < self.size.width / 2.0) {
-      self.player.forwardMarch = NO;
-    } else {
-      self.player.mightAsWellJump = NO;
-    }
-  }
+  self.player.forwardMarch = NO;
+  self.player.mightAsWellJump = NO;
+  self.player.backwardMarch = NO;
+  NSLog(@"Nothing Happening");
 }
+
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+//  
+//  for (UITouch *touch in touches) {
+//    CGPoint touchLocation = [touch locationInNode:self];
+//    if (touchLocation.x < self.size.width / 2.0) {
+//      self.player.forwardMarch = NO;
+//    } else {
+//      self.player.mightAsWellJump = NO;
+//    }
+//  }
+//}
 
 - (void)setViewpointCenter:(CGPoint)position {
   NSInteger x = MAX(position.x, self.size.width / 2);
@@ -302,7 +323,7 @@
 }
 
 -(void)checkForWin {
-  if (self.player.position.x > 3130.0) {
+  if (self.player.position.x >= 3130.0) {
     [self gameOver:1];
   }
 }

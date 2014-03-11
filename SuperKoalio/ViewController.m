@@ -27,9 +27,9 @@
   // Present the scene.
   [skView presentScene:scene];
   
-  ADBannerView *adView = [[ADBannerView alloc] initWithFrame: CGRectMake(0.0, 0.0, 480.0, 32.0)];
-  [adView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-  [self.view addSubview:adView];
+//  ADBannerView *adView = [[ADBannerView alloc] initWithFrame: CGRectMake(0.0, 0.0, 480.0, 32.0)];
+//  [adView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+//  [self.view addSubview:adView];
 }
 
 - (BOOL)shouldAutorotate
